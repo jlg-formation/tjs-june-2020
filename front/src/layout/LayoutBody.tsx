@@ -2,7 +2,14 @@ import React from "react";
 import "./LayoutBody.css";
 
 function LayoutBody() {
-  return <div className="LayoutBody">Coucou je suis LayoutBody</div>;
+  return (
+    <main>
+      <section className="jumbo">
+        <h1>Bienvenue !</h1>
+        <button>Voir les stocks</button>
+      </section>
+    </main>
+  );
 }
 
 export default LayoutBody;
