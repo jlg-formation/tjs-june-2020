@@ -11,4 +11,4 @@ app.use((req, res, next) => {
 app.use(express.static("./www"));
 app.use(serveIndex("./www"));
 
-app.listen(3000, () => console.log("website started on port 3000"));
+app.listen(3500, () => console.log("website started on port 3500"));
