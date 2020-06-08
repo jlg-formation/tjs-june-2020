@@ -8,7 +8,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static("./www"));
-app.use(serveIndex("./www"));
+app.use(express.static("../front/build"));
+app.use(serveIndex("../front/build"));
 
 app.listen(3500, () => console.log("website started on port 3500"));
