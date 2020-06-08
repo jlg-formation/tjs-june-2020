@@ -1,0 +1,12 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3em;
+    background: #eee;
+}
+
+footer span {
+    display: block;
+    padding: 0.5em;
+}
