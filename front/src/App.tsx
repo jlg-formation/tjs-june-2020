@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import LayoutHeader from './layout/LayoutHeader';
 import LayoutBody from './layout/LayoutBody';
