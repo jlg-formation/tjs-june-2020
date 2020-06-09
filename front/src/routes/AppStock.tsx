@@ -10,6 +10,18 @@ function AppStock() {
   const af = useContext(ArticleContext);
   console.log("af: ", af);
 
+  function toggleSelect(e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) {
+    console.log("e: ", e);
+    console.log("e.target: ", e.currentTarget);
+    const row = e.currentTarget;
+    const cl = row.classList;
+    if (cl.contains("selected")) {
+      cl.remove("selected");
+      return;
+    }
+    cl.add("selected");
+  }
+
   return (
     <section className="stock">
       <h1>Liste d'articles</h1>
@@ -33,7 +45,7 @@ function AppStock() {
         </thead>
         <tbody>
           {af.articles.map((a) => (
-            <tr key={a.id}>
+            <tr key={a.id} onClick={toggleSelect}>
               <td>{a.name}</td>
               <td>{a.price} €</td>
               <td>{a.qty}</td>
