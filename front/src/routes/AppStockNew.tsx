@@ -1,13 +1,18 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 
 import "./AppStockNew.scss";
 import { Article } from "../interfaces/Article";
 
 function AppStockNew() {
   const { register, handleSubmit, /* watch, */ errors } = useForm<Article>();
+  const history = useHistory();
 
-  const onSubmit = (data: Article) => console.log(data);
+  const onSubmit = (article: Article) => {
+    console.log(article);
+    history.push("/stock");
+  };
 
   // console.log(watch("name"));
   // console.log(watch("price"));
