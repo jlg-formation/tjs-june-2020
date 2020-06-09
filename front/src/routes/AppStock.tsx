@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faRedo } from "@fortawesome/free-solid-svg-icons";
 
-import "./AppStock.css";
+import "./AppStock.scss";
 import ArticleContext from "../contexts/ArticleContext";
 
 function AppStock() {

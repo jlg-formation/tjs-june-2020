@@ -1,0 +1,35 @@
+.stock {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  max-width: 19em;
+
+  table {
+    border: 0.1em solid #ddd;
+    width: 100%;
+    border-collapse: collapse;
+
+    tr:nth-child(even) {
+      background: #eee;
+    }
+
+    td {
+      padding: 0.5em;
+    }
+
+    th {
+      background: #ddd;
+      padding: 0.5em;
+    }
+  }
+
+  .buttons {
+    align-self: flex-start;
+    padding-bottom: 0.5em;
+
+    button {
+      margin-right: 0.5em;
+    }
+  }
+}
