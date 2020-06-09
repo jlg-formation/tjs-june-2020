@@ -1,14 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import logo from "../logo.svg";
 import "./LayoutHeader.css";
 
 function LayoutHeader() {
   return (
     <header>
-      <a href="/">
+      <Link to="/">
         <img src={logo} alt="Logo Gestion de stock" />
         <span>Gestion de stock</span>
-      </a>
+      </Link>
     </header>
   );
 }

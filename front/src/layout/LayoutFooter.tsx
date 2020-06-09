@@ -1,12 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import "./LayoutFooter.css";
 
 function LayoutFooter() {
   return (
     <footer>
-      <a href="/">
+      <Link to="/legal">
         <span>Mentions Légales</span>
-      </a>
+      </Link>
     </footer>
   );
 }

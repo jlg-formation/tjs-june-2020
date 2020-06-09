@@ -1,9 +1,13 @@
 @import "../node_modules/normalize.css/normalize.css";
 
 body {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 button {
-    padding: 0.5em 1em;
+  padding: 0.5em 1em;
+}
+
+p {
+  max-width: 50em;
 }

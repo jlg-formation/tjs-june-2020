@@ -1,13 +1,21 @@
 import React from "react";
 import "./LayoutBody.css";
 
+import { Switch, Route } from "react-router-dom";
+import AppLegal from "../routes/AppLegal";
+import AppHome from "../routes/AppHome";
+
 function LayoutBody() {
   return (
     <main>
-      <section className="jumbo">
-        <h1>Bienvenue !</h1>
-        <button>Voir les stocks</button>
-      </section>
+       <Switch>
+          <Route path="/legal">
+            <AppLegal />
+          </Route>
+          <Route path="/">
+            <AppHome />
+          </Route>
+        </Switch>
     </main>
   );
 }
