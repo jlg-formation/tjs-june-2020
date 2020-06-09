@@ -7,8 +7,8 @@ import "./AppStock.css";
 import ArticleContext from "../contexts/ArticleContext";
 
 function AppStock() {
-  const articles = useContext(ArticleContext);
-  console.log("articles: ", articles);
+  const af = useContext(ArticleContext);
+  console.log("af: ", af);
 
   return (
     <section className="stock">
@@ -32,7 +32,7 @@ function AppStock() {
           </tr>
         </thead>
         <tbody>
-          {articles.map((a) => (
+          {af.articles.map((a) => (
             <tr key={a.id}>
               <td>{a.name}</td>
               <td>{a.price} €</td>

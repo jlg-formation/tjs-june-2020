@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 
 import "./AppStockNew.scss";
 import { Article } from "../interfaces/Article";
+import ArticleContext from "../contexts/ArticleContext";
 
 function AppStockNew() {
   const { register, handleSubmit, /* watch, */ errors } = useForm<Article>();
   const history = useHistory();
+  const af = useContext(ArticleContext);
 
   const onSubmit = (article: Article) => {
     console.log(article);
+    af.add(article);
     history.push("/stock");
   };
 
