@@ -8,6 +8,10 @@ button {
   padding: 0.5em 1em;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 p {
   max-width: 50em;
 }
