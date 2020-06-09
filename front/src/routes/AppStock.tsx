@@ -6,11 +6,14 @@ function AppStock() {
     <section className="stock">
       <h1>Liste d'articles</h1>
       <table>
+        <thead>
         <tr>
           <th>Nom</th>
           <th>Prix</th>
           <th>Quantité</th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
           <td>Tournevis</td>
           <td>1.23 €</td>
@@ -26,6 +29,7 @@ function AppStock() {
           <td>1.23 €</td>
           <td>100</td>
         </tr>
+        </tbody>
       </table>
     </section>
   );
