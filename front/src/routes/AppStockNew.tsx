@@ -1,45 +1,62 @@
-import React, { useState, FormEvent } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
+
 import "./AppStockNew.scss";
+import { Article } from "../interfaces/Article";
 
 function AppStockNew() {
-  const [article, setArticle] = useState({
-    name: "Tournevis",
-    price: 12.33,
-    qty: 110,
-  });
+  const { register, handleSubmit, /* watch, */ errors } = useForm<Article>();
 
-  function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    console.log("submit: ", article);
-  }
+  const onSubmit = (data: Article) => console.log(data);
 
-  function handleOnInput(e: FormEvent<HTMLInputElement>) {
-    const attrName = e.currentTarget.name;
-    setArticle({
-      ...article,
-      [attrName]: e.currentTarget.value,
-    });
-  }
+  // console.log(watch("name"));
+  // console.log(watch("price"));
+  // console.log(watch("qty"));
 
   return (
     <section className="stock-new">
       <h1>Ajouter un article</h1>
-      <form onSubmit={submit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <label>
           <div>Nom</div>
-          <input type="text" name="name" onInput={handleOnInput} />
+          <input
+            type="text"
+            name="name"
+            defaultValue="Tournevis"
+            ref={register({ required: true })}
+          />
+          <div className="error">
+            {errors.name && <span>Oups... Nom obligatoire</span>}{" "}
+          </div>
         </label>
         <label>
           <div>Prix</div>
-          <input type="number" name="price" onInput={handleOnInput} />
+          <input
+            type="number"
+            name="price"
+            step="0.01"
+            defaultValue="12.33"
+            ref={register({ required: true })}
+          />
+          <div className="error">
+            {errors.price && <span>Oups... Prix obligatoire</span>}{" "}
+          </div>
         </label>
         <label>
           <div>Quantité</div>
-          <input type="number" name="qty" onInput={handleOnInput} />
+          <input
+            type="number"
+            name="qty"
+            defaultValue="110"
+            ref={register({ required: true })}
+          />
+          <div className="error">
+            {errors.qty && <span>Oups... Price obligatoire</span>}{" "}
+          </div>
         </label>
+
         <button type="submit">Créer</button>
       </form>
-      {JSON.stringify(article)}
     </section>
   );
 }
