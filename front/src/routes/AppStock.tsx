@@ -1,15 +1,22 @@
 import React from "react";
-import "./AppStock.css";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faRedo } from "@fortawesome/free-solid-svg-icons";
+
+import "./AppStock.css";
 
 function AppStock() {
   return (
     <section className="stock">
       <h1>Liste d'articles</h1>
       <div className="buttons">
-        <button>Raffraichir</button>
+        <button>
+          <FontAwesomeIcon icon={faRedo} />
+        </button>
         <Link to="/stock/new">
-          <button>Ajouter</button>
+          <button>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
         </Link>
       </div>
       <table>
