@@ -16,11 +16,20 @@
   padding: 0.5em;
 }
 
-.stock table tr:nth-child(odd) {
+.stock table tr:nth-child(even) {
   background: #eee;
 }
 
 .stock table th {
   background: #ddd;
   padding: 0.5em;
+}
+
+.stock .buttons {
+  align-self: flex-start;
+  padding-bottom: 0.5em;
+}
+
+.stock .buttons button {
+  margin-right: 0.5em;
 }
