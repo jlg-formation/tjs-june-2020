@@ -1,0 +1,26 @@
+.stock-new {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  max-width: 19em;
+  align-items: center;
+
+  form {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+
+    input {
+      padding: 0.5em 1em;
+      width: 100%;
+    }
+
+    label {
+      padding-bottom: 1em;
+    }
+
+    button {
+      margin-top: 1em;
+    }
+  }
+}
