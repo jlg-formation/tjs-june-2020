@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import "./AppStockNew.scss";
 
 function AppStockNew() {
@@ -8,12 +8,12 @@ function AppStockNew() {
     qty: 110,
   });
 
-  function submit(e: SyntheticEvent) {
+  function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log("submit: ", article);
   }
 
-  function handleOnInput(e: SyntheticEvent<HTMLInputElement>) {
+  function handleOnInput(e: FormEvent<HTMLInputElement>) {
     const attrName = e.currentTarget.name;
     setArticle({
       ...article,
