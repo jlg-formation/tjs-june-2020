@@ -2,13 +2,23 @@ import React, { useState, SyntheticEvent } from "react";
 import "./AppStockNew.scss";
 
 function AppStockNew() {
-  const [name, setName] = useState("Tournevis");
-  const [price, setPrice] = useState(12.23);
-  const [qty, setQty] = useState(110);
+  const [article, setArticle] = useState({
+    name: "Tournevis",
+    price: 12.33,
+    qty: 110,
+  });
 
   function submit(e: SyntheticEvent) {
     e.preventDefault();
-    console.log("submit: ", { name, price, qty });
+    console.log("submit: ", article);
+  }
+
+  function handleOnInput(e: SyntheticEvent<HTMLInputElement>) {
+    const attrName = e.currentTarget.name;
+    setArticle({
+      ...article,
+      [attrName]: e.currentTarget.value,
+    });
   }
 
   return (
@@ -17,25 +27,19 @@ function AppStockNew() {
       <form onSubmit={submit}>
         <label>
           <div>Nom</div>
-          <input type="text" onInput={(e) => setName(e.currentTarget.value)} />
+          <input type="text" name="name" onInput={handleOnInput} />
         </label>
         <label>
           <div>Prix</div>
-          <input
-            type="number"
-            onInput={(e) => setPrice(+e.currentTarget.value)}
-          />
+          <input type="number" name="price" onInput={handleOnInput} />
         </label>
         <label>
           <div>Quantité</div>
-          <input
-            type="number"
-            onInput={(e) => setQty(+e.currentTarget.value)}
-          />
+          <input type="number" name="qty" onInput={handleOnInput} />
         </label>
         <button type="submit">Créer</button>
       </form>
-      {JSON.stringify({ name, price, qty })}
+      {JSON.stringify(article)}
     </section>
   );
 }
