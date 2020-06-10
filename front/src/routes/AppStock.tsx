@@ -30,6 +30,7 @@ function AppStock() {
   function remove() {
     console.log("remove");
     af.remove(selectedArticles);
+    setSelectedArticles([]);
   }
 
   function refresh() {
@@ -55,28 +56,32 @@ function AppStock() {
           </button>
         )}
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Prix</th>
-            <th>Quantité</th>
-          </tr>
-        </thead>
-        <tbody>
-          {af.articles.map((a) => (
-            <tr
-              key={a.id}
-              onClick={toggleSelect(a)}
-              className={classNames({ selected: selectedArticles.includes(a) })}
-            >
-              <td>{a.name}</td>
-              <td>{a.price} €</td>
-              <td>{a.qty}</td>
+      {af.articles.length > 0 && (
+        <table>
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prix</th>
+              <th>Quantité</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {af.articles.map((a) => (
+              <tr
+                key={a.id}
+                onClick={toggleSelect(a)}
+                className={classNames({
+                  selected: selectedArticles.includes(a),
+                })}
+              >
+                <td>{a.name}</td>
+                <td>{a.price} €</td>
+                <td>{a.qty}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
       {/* {JSON.stringify(selectedArticles)} */}
     </section>
   );
