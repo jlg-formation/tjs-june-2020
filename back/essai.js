@@ -12,6 +12,22 @@ function appendFilePromise(filename, content) {
   });
 }
 
+appendFilePromise("toto.txt", "hello\n").then(() => {
+    return appendFilePromise("toto.txt", "hello\n")
+}).then(() => {
+    return appendFilePromise("toto.txt", "hello\n")
+}).then(() => {
+    return appendFilePromise("toto.txt", "hello\n")
+}).then(() => {
+    return appendFilePromise("toto.txt", "hello\n")
+}).then(() => {
+    return appendFilePromise("toto.txt", "hello\n")
+}).then(() => {
+    return appendFilePromise("toto.txt", "hello\n")
+}).catch((e) => {
+    console.log(e);
+});
+
 (async function () {
   try {
     await appendFilePromise("toto.txt", "hello\n");
