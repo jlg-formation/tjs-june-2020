@@ -16,16 +16,17 @@ function AppStock() {
     return (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
       const row = e.currentTarget;
       const cl = row.classList;
+      const newSelectedArticles = [...selectedArticles];
       if (cl.contains("selected")) {
         cl.remove("selected");
-        const index = selectedArticles.findIndex((a) => a === article);
-        selectedArticles.splice(index, 1);
+        const index = newSelectedArticles.findIndex((a) => a === article);
+        newSelectedArticles.splice(index, 1);
       } else {
         cl.add("selected");
-        selectedArticles.push(article);
+        newSelectedArticles.push(article);
       }
-      setSelectedArticles(selectedArticles);
-      console.log("selectedArticles: ", selectedArticles);
+      setSelectedArticles(newSelectedArticles);
+      console.log("newSelectedArticles: ", newSelectedArticles);
     };
   }
 
