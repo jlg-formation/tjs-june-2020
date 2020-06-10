@@ -32,6 +32,7 @@ class ArticleFactory {
   }
 
   add(article: Article) {
+    article.id = article.id || "temp";
     this.articles.push(article);
     this.save();
     this.render();
