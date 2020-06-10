@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import "./App.css";
@@ -8,9 +8,14 @@ import LayoutFooter from "./layout/LayoutFooter";
 import ArticleContext from "./contexts/ArticleContext";
 
 function App() {
-  const [, setCounter] = useState(0);
+  const [counter, setCounter] = useState(0);
   const af = useContext(ArticleContext);
   af.setRenderFn(setCounter);
+
+  useEffect(() => {
+    console.log("app just rendered. counter = ", counter);
+  });
+
   return (
     <Router>
       {/* <div>counter = {counter}</div> */}
