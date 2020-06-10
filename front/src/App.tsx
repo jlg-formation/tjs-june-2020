@@ -8,12 +8,12 @@ import LayoutFooter from "./layout/LayoutFooter";
 import ArticleContext from "./contexts/ArticleContext";
 
 function App() {
-  const [counter, setCounter] = useState(0);
+  const [, setCounter] = useState(0);
   const af = useContext(ArticleContext);
   af.setRenderFn(setCounter);
   return (
     <Router>
-      <div>counter = {counter}</div>
+      {/* <div>counter = {counter}</div> */}
       <div className="App">
         <LayoutHeader />
         <LayoutBody />
