@@ -27,6 +27,11 @@ function AppStock() {
     };
   }
 
+  function remove() {
+    console.log('remove');
+
+  }
+
   return (
     <section className="stock">
       <h1>Liste d'articles</h1>
@@ -40,7 +45,7 @@ function AppStock() {
           </button>
         </Link>
         {selectedArticles.length > 0 && (
-          <button>
+          <button onClick={remove}>
             <FontAwesomeIcon icon={faTrashAlt} />
           </button>
         )}
