@@ -15,7 +15,7 @@ const str = fs.readFileSync("data.db", { encoding: "utf8" });
 console.log("str: ", str);
 const articles: Article[] = JSON.parse(str);
 
-let lastId = 2;
+let lastId = Math.max(0, ...articles.map(a => +a.id.substring(1)));
 
 app.get("/articles", (req, res) => {
   res.json(articles);

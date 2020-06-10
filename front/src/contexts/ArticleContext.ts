@@ -26,10 +26,7 @@ class ArticleFactory {
   getArticles() {
     const str = localStorage.getItem("articles");
     if (!str) {
-      return [
-        { id: "a1", name: "Tournevis", price: 0, qty: 1 },
-        { id: "a2", name: "Pince", price: 12.33, qty: 10 },
-      ];
+      return [];
     }
     return JSON.parse(str);
   }
@@ -65,6 +62,20 @@ class ArticleFactory {
     });
     this.save();
     this.render();
+    (async () => {
+      try {
+        await fetch("http://localhost:3500/ws/bulk/articles", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(selectedArticles.map((a) => a.id)),
+        });
+        await this.refresh();
+      } catch (e) {
+        console.log("e: ", e);
+      }
+    })();
   }
 
   setRenderFn(callback: Function) {
