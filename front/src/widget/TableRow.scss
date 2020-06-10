@@ -1,0 +1,18 @@
+tr {
+  &:nth-child(even) {
+    background: #eee;
+  }
+
+  &.selected,
+  &.selected:hover {
+    background: #ccc;
+  }
+
+  &:hover {
+    background: #ddd;
+  }
+
+  td {
+    padding: 0.5em;
+  }
+}

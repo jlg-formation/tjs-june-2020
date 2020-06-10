@@ -10,22 +10,6 @@
     width: 100%;
     border-collapse: collapse;
 
-    tr:nth-child(even) {
-      background: #eee;
-    }
-
-    tr.selected, tr.selected:hover {
-      background: #ccc;
-    }
-
-    tr:hover {
-      background: #ddd;
-    }
-
-    td {
-      padding: 0.5em;
-    }
-
     th {
       background: #ddd;
       padding: 0.5em;

@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faRedo, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import classNames from "classnames";
 
 import "./AppStock.scss";
 import ArticleContext from "../contexts/ArticleContext";
 import { Article } from "../interfaces/Article";
+import TableRow from "../widget/TableRow";
 
 function AppStock() {
   const af = useContext(ArticleContext);
@@ -67,17 +67,12 @@ function AppStock() {
           </thead>
           <tbody>
             {af.articles.map((a) => (
-              <tr
+              <TableRow
                 key={a.id}
+                a={a}
                 onClick={toggleSelect(a)}
-                className={classNames({
-                  selected: selectedArticles.includes(a),
-                })}
-              >
-                <td>{a.name}</td>
-                <td>{a.price} €</td>
-                <td>{a.qty}</td>
-              </tr>
+                selectedArticles={selectedArticles}
+              />
             ))}
           </tbody>
         </table>
