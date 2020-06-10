@@ -17,6 +17,7 @@ class ArticleFactory {
       console.log("json: ", json);
       this.articles = json;
       this.save();
+      this.render();
     } catch (e) {
       console.log("e: ", e);
     }
@@ -34,11 +35,23 @@ class ArticleFactory {
   }
 
   add(article: Article) {
-    if (article.id === undefined) {
-      article.id = "a" + Math.round(Math.random() * 1e9);
-    }
     this.articles.push(article);
     this.save();
+    this.render();
+    (async () => {
+      try {
+        await fetch("http://localhost:3500/ws/articles", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(article),
+        });
+        await this.refresh();
+      } catch (e) {
+        console.log("e: ", e);
+      }
+    })();
   }
 
   save() {
