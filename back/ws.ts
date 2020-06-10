@@ -7,7 +7,7 @@ const app = express.Router();
 app.use(express.json());
 
 app.use((req, res, next) => {
-  setTimeout(next, 2000);
+  setTimeout(next, 0);
 });
 
 const articles: Article[] = [

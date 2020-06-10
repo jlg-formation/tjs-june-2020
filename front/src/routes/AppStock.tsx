@@ -32,11 +32,16 @@ function AppStock() {
     af.remove(selectedArticles);
   }
 
+  function refresh() {
+    console.log("refresh");
+    af.refresh();
+  }
+
   return (
     <section className="stock">
       <h1>Liste d'articles</h1>
       <div className="buttons">
-        <button>
+        <button onClick={refresh}>
           <FontAwesomeIcon icon={faRedo} />
         </button>
         <Link to="/stock/new">
