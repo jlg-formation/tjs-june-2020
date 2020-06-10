@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faRedo, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import classNames from 'classnames';
 
 import "./AppStock.scss";
 import ArticleContext from "../contexts/ArticleContext";
@@ -13,16 +14,12 @@ function AppStock() {
   const [selectedArticles, setSelectedArticles] = useState([] as Article[]);
 
   function toggleSelect(article: Article) {
-    return (e: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
-      const row = e.currentTarget;
-      const cl = row.classList;
+    return () => {
       const newSelectedArticles = [...selectedArticles];
-      if (cl.contains("selected")) {
-        cl.remove("selected");
+      if (newSelectedArticles.includes(article)) {
         const index = newSelectedArticles.findIndex((a) => a === article);
         newSelectedArticles.splice(index, 1);
       } else {
-        cl.add("selected");
         newSelectedArticles.push(article);
       }
       setSelectedArticles(newSelectedArticles);
@@ -58,7 +55,7 @@ function AppStock() {
         </thead>
         <tbody>
           {af.articles.map((a) => (
-            <tr key={a.id} onClick={toggleSelect(a)}>
+            <tr key={a.id} onClick={toggleSelect(a)} className={classNames({selected: selectedArticles.includes(a)})}>
               <td>{a.name}</td>
               <td>{a.price} €</td>
               <td>{a.qty}</td>
