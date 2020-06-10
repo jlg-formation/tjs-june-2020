@@ -1,4 +1,5 @@
 import express from "express";
+import fs from "fs";
 
 import { Article } from "../front/src/interfaces/Article";
 
@@ -10,10 +11,9 @@ app.use((req, res, next) => {
   setTimeout(next, 0);
 });
 
-const articles: Article[] = [
-  { id: "a1", name: "Tournevis xxx", price: 0, qty: 1 },
-  { id: "a2", name: "Pince", price: 12.33, qty: 10 },
-];
+const str = fs.readFileSync("data.db", { encoding: "utf8" });
+console.log("str: ", str);
+const articles: Article[] = JSON.parse(str);
 
 let lastId = 2;
 
@@ -21,12 +21,13 @@ app.get("/articles", (req, res) => {
   res.json(articles);
 });
 
-app.post("/articles", (req, res) => {
+app.post("/articles", async (req, res) => {
   const article = req.body;
   console.log("article: ", article);
   lastId++;
   article.id = "a" + lastId;
   articles.push(article);
+  await fs.promises.writeFile("data.db", JSON.stringify(articles, undefined, 2));
   res.json(article);
 });
 
