@@ -56,7 +56,7 @@ function AppStock() {
           </button>
         )}
       </div>
-      {af.articles.length > 0 && (
+      {af.articles.length > 0 ? (
         <table>
           <thead>
             <tr>
@@ -81,6 +81,8 @@ function AppStock() {
             ))}
           </tbody>
         </table>
+      ) : (
+        <div>Pas d'article</div>
       )}
       {/* {JSON.stringify(selectedArticles)} */}
     </section>
