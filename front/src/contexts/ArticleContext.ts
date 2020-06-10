@@ -6,6 +6,22 @@ class ArticleFactory {
   renderFn: Function = () => {};
   counter = 0;
 
+  constructor() {
+    this.refresh();
+  }
+
+  async refresh() {
+    try {
+      const response = await fetch("http://localhost:3500/ws/articles");
+      const json = await response.json();
+      console.log("json: ", json);
+      this.articles = json;
+      this.save();
+    } catch (e) {
+      console.log("e: ", e);
+    }
+  }
+
   getArticles() {
     const str = localStorage.getItem("articles");
     if (!str) {
