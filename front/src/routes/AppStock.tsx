@@ -28,8 +28,8 @@ function AppStock() {
   }
 
   function remove() {
-    console.log('remove');
-
+    console.log("remove");
+    af.remove(selectedArticles);
   }
 
   return (
