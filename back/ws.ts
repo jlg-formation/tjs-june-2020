@@ -11,7 +11,13 @@ app.use((req, res, next) => {
   setTimeout(next, 0);
 });
 
-const str = fs.readFileSync("data.db", { encoding: "utf8" });
+const filename = "data.db";
+
+if (!fs.existsSync(filename)) {
+  fs.writeFileSync(filename, JSON.stringify([], undefined, 2));
+}
+
+const str = fs.readFileSync(filename, { encoding: "utf8" });
 console.log("str: ", str);
 const articles: Article[] = JSON.parse(str);
 
@@ -28,7 +34,7 @@ app.post("/articles", async (req, res) => {
   article.id = "a" + lastId;
   articles.push(article);
   await fs.promises.writeFile(
-    "data.db",
+    filename,
     JSON.stringify(articles, undefined, 2)
   );
   res.json(article);
@@ -46,7 +52,7 @@ app.delete("/bulk/articles", async (req, res) => {
   });
 
   await fs.promises.writeFile(
-    "data.db",
+    filename,
     JSON.stringify(articles, undefined, 2)
   );
   res.status(204).end();
